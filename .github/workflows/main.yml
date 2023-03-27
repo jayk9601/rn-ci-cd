@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Run Tests
-        run: bash ./gradlew test --stacktrace  
+        run: cd android && ./gradlew test --stacktrace  
   # apk:
   #   name: Generate APK
   #   needs: test
