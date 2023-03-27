@@ -16,9 +16,11 @@ name: Formate Code
 #############################
 on:
   push:
-    branches: [main]
+    branches: 
+     - main
   pull_request:
-    branches: [main]
+    branches: 
+     - main
 
 # Set the Job #
 jobs:
