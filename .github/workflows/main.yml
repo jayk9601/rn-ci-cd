@@ -12,7 +12,6 @@ jobs:
     steps:
       - name: Change wrapper permissions
         run: chmod +x ./gradlew
-        
       - name: Run gradle tests
         run: ./gradlew test 
   # apk:
