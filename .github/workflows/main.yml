@@ -9,8 +9,6 @@ jobs:
     steps:
       - name: Install npm dependencies
         run: yarn install
-      
+
       - name: Code Formatting
-        uses: mezgoodle/auto-formatter@v1.0.2
-        env:
-            GITHUB_TOKEN: ${{ secrets.TOKEN }}
+        run: yarn prettier --write .
