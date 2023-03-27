@@ -11,4 +11,4 @@ jobs:
         run: yarn install
 
       - name: Code Formatting
-        run: yarn prettier --write .
+        run: yarn "prettier --write ."
