@@ -21,7 +21,7 @@ on:
 
 # Set the Job #
 jobs:
-  build:
+  install-and-test:
     # Name the Job
     name: Formate Code
     # Set the agent to run on
