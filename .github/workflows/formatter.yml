@@ -31,4 +31,4 @@ jobs:
     steps:
       # Checkout the code base #
       - name: Checkout Code
-        run: yarn https://github.com/mezgoodle/auto-formatter
+        run: yarn format
