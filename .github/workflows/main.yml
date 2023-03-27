@@ -9,3 +9,6 @@ jobs:
     steps:
       - name: Install npm dependencies
         run: yarn install
+      
+      - name: Code Formatting
+        run: prettier src --write
