@@ -9,6 +9,7 @@ jobs:
   test:
     name: Run Unit Tests
     runs-on: ubuntu-latest
+    
     steps:
       - name: Change wrapper permissions
         run: chmod +x ./gradlew
