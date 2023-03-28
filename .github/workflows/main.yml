@@ -6,7 +6,6 @@ on:
       - "main"
 
 jobs:
-  #First job
   install-and-test:
     runs-on: ubuntu-latest
     steps:
