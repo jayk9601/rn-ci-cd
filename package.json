@@ -8,11 +8,13 @@
     "format": "prettier --write .",
     "lint": "eslint src --ext .js,.jsx,.ts,.tsx --fix",
     "start": "react-native start",
-    "test": "jest",  
+    "test": "jest",
     "preci": "rm -fr node_modules",
     "ci": "yarn install --frozen-lockfile"
   },
   "dependencies": {
+    "@react-native-firebase/app": "^17.4.0",
+    "@react-native-firebase/messaging": "^17.4.0",
     "react": "18.2.0",
     "react-native": "0.71.4"
   },

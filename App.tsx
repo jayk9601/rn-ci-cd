@@ -1,7 +1,20 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {Button, Text, View, StyleSheet} from 'react-native';
+import messaging from '@react-native-firebase/messaging';
+
 const App = () => {
   const [message, setMessage] = useState('');
+  const getFCMToken = async () => {
+    try {
+      const token = await messaging().getToken();
+      console.log(token);
+    } catch (e) {
+      console.log(e);
+    }
+  };
+  useEffect(() => {
+    getFCMToken();
+  }, []);
   return (
     <View style={{flex: 1, justifyContent: 'center'}}>
       <Button
