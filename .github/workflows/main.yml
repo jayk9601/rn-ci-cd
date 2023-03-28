@@ -11,6 +11,16 @@ jobs:
     steps:
       - name: Install Node modules
         run: yarn install
+      - name: Restore Pods cache
+        uses: actions/cache@v3
+        with:
+          path: |
+            ios/Pods
+            ~/Library/Caches/CocoaPods
+            ~/.cocoapods
+          key: ${{ runner.os }}-pods-${{ hashFiles('ios/Podfile.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-pods-
       - name: Install pod dependencies
         run: cd ios && pod install && cd ..
         
