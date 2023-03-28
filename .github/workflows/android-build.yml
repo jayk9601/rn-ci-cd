@@ -15,8 +15,8 @@ jobs:
         with:
            node-version: 16
 
-      - name: Install Node modules
-        run: yarn ci
+      # - name: Install Node modules
+      #   run: yarn ci
 
       # - name: Cache Gradle Wrapper
       #   uses: actions/cache@v2
@@ -54,6 +54,6 @@ jobs:
         uses: wzieba/Firebase-Distribution-Github-Action@v1
         with:
          appId: '1:569228925032:android:ae7d8331ae02c49301c3dd'
-         token: 'dd5lXnaYS8S5MoH5wyWpQ4:APA91bFZ_MceoNSRWre_eN1yffoh4U6lIL-7VtS7ws_XEgn7ZUh73aA8qzXionEOP_cXkNR8ugwqTK8pDxGc1YqDru-dJDv8A43unt1ofPOiS8Yg90EsBhxZAt7W8X19ds75PjNLFeag'
+         token: '1//0gP9B1vpyaCbLCgYIARAAGBASNwF-L9IrH-WekGG_9ZrZYFlH8a6rGreOAP9YWxmklmJkyWq36izhouRhO3nbdmkw6CSE4ADqFac'
          groups: testers
          file: android/app/build/outputs/apk/release/app-release.apk
