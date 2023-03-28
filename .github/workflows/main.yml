@@ -1,26 +1,12 @@
-name: Pull Request into Master, Develop and Preprod
+name: Build Android & iOS
 
-on:
-  push:
-    branches:
-      - "main"
+# Triggered when code is pushed to any branch in a repository
+on: push
 
 jobs:
-  install-and-test:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Install Node modules
-        run: yarn install
-      - name: Restore Pods cache
-        uses: actions/cache@v3
-        with:
-          path: |
-            ios/Pods
-            ~/Library/Caches/CocoaPods
-            ~/.cocoapods
-          key: ${{ runner.os }}-pods-${{ hashFiles('ios/Podfile.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-pods-
-      - name: Install pod dependencies
-        run: cd ios && pod install && cd ..
-        
+ build-android:
+    needs: install-and-test
+    uses: ./.github/workflows/android-build.yml
+    with:
+      environment: release
+    secrets: inherit
