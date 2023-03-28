@@ -1,32 +1,19 @@
 name: "Android Build"
 
 on:
-  workflow_call:
-    inputs:
-      environment:
-        required: true
-        type: string
-      publish:
-        required: false
-        type: boolean
-        description: Publish to Appcenter
-    secrets:
-      NPM_TOKEN:
-        required: true
-      APP_CENTER_TOKEN_ANDROID:
-        required: true
+  push:
+    
 
 jobs:
   build-android:
-  
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
 
-      - name: Use Node.js 14
+      - name: Use Node.js 16.10.0
         uses: actions/setup-node@v3
         with:
-          node-version: 14
+          node-version: 16.10.0
           cache: "yarn"
 
       - name: Install Node modules
