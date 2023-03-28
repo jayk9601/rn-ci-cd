@@ -12,6 +12,11 @@ const App = () => {
           }, Math.floor(Math.random() * 200));
         }}
       />
+      {message && (
+        <Text style={styles.messageText} testID="printed-message">
+          {message}
+        </Text>
+      )}
     </View>
   );
 };
