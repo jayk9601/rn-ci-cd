@@ -36,10 +36,10 @@ jobs:
 
       - name: Build Android ${{inputs.environment == 'release' && 'Release' || 'Debug'}}
         run: |
-          cd android && ./gradlew bundle${{inputs.environment == 'release' && 'Release' || 'Debug'}} --no-daemon
+          cd android && ./gradlew assembleRelease --no-daemon
       # Upload to Artifact
       - name: Upload Artifact
         uses: actions/upload-artifact@v3
         with:
           name: FinderUK.aab
-          path: "android/app/build/outputs/bundle/release/app-release.aab"
+          path: "~android/app/build/outputs/apk/release/app-release.apk"
