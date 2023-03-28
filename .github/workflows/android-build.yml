@@ -31,29 +31,29 @@ jobs:
       #     key: ${{ runner.os }}-gradle-caches-${{ hashFiles('gradle/wrapper/gradle-wrapper.properties') }}
       #     restore-keys: |
       #       ${{ runner.os }}-gradle-caches-
-      - name: Make Gradlew Executable
-        run: cd android && chmod +x ./gradlew
+      # - name: Make Gradlew Executable
+      #   run: cd android && chmod +x ./gradlew
 
       # clean build folder  
       
-      - name: Clean Build Folder
-        run: cd android && ./gradlew clean
+      # - name: Clean Build Folder
+      #   run: cd android && ./gradlew clean
 
       # Build Command
-      - name: Build Android Release
-        run: cd android && ./gradlew assembleRelease
+      # - name: Build Android Release
+      #   run: cd android && ./gradlew assembleRelease
 
       # Upload to Artifact
-      - name: Upload Artifact to Github
-        uses: actions/upload-artifact@v3
-        with:
-          name: RN-CI-CD.apk
-          path: "android/app/build/outputs/apk/release/app-release.apk"
+      # - name: Upload Artifact to Github
+      #   uses: actions/upload-artifact@v3
+      #   with:
+      #     name: RN-CI-CD.apk
+      #     path: "android/app/build/outputs/apk/release/app-release.apk"
 
       - name: upload artifact to Firebase App Distribution
         uses: wzieba/Firebase-Distribution-Github-Action@v1
         with:
-         appId: ${{secrets.FIREBASE_APP_ID}}
-         serviceCredentialsFileContent: ${{ secrets.CREDENTIAL_FILE_CONTENT }}
-         groups: testers
-         file: android/app/build/outputs/apk/release/app-release.apk    
+          appId: ${{secrets.ANDROID_FIREBASE_APP_ID}}
+          token: ${{secrets.ANDROID_FIREBASE_TOKEN}}
+          groups: testers
+          file: ${{steps.sign_app.outputs.signedReleaseFile}} 
