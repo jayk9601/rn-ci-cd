@@ -1,35 +1,3 @@
-# name: Build & upload to Firebase App Distribution 
-
-# on:
-#  push:
-#   branches:
-#     - upload_to_firebase
-
-# jobs:
-#   build:
-
-#     runs-on: ubuntu-latest
-
-#     steps:
-#     - uses: actions/checkout@v3
-#     # - name: set up JDK 1.8
-#     #   uses: actions/setup-java@v1
-#     #   with:
-#     #     java-version: 1.8
-#     - name: Install Node modules
-#       run: yarn ci
-#     - name: clean build folder 
-#       run: cd android && ./gradlew clean && cd ..
-#     - name: build release 
-#       run: cd android && ./gradlew assembleRelease && cd ..
-#     - name: upload artifact to Firebase App Distribution
-#       uses: wzieba/Firebase-Distribution-Github-Action@v1
-#       with:
-#         appId: '1:569228925032:android:ae7d8331ae02c49301c3dd'
-#         token: '1//0gWkFp5mUqrBSCgYIARAAGBASNwF-L9IrP7jZVZd1VR9bL-DEIcYRxO7z9u0D303kf-Re6ZUriv-1tFlVKPWjArtIoTVpsirUWkw'
-#         groups: testers
-#         file: app/build/outputs/apk/release/app-release.apk
-
 name: Build & upload to Firebase App Distribution
 
 on:
@@ -94,8 +62,7 @@ jobs:
            appId: 1:569228925032:android:ae7d8331ae02c49301c3dd
            serviceCredentialsFileContent: ${{ secrets.CREDENTIAL_FILE_CONTENT }}
            groups: android_testers
-           file: app-release.apk
-          #  path: "android/app/build/outputs/apk/release/app-release.apk"
+           file: android/app/build/outputs/apk/release/app-release.apk
    
            
   
