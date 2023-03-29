@@ -85,7 +85,8 @@ jobs:
            token: 1//0gtTaM6OHL7X1CgYIARAAGBASNwF-L9IrgcFGy_Nj7YjsWELgwVz3rnauUzgQvp5XMBrcBz5nwYo4aTpLLQLvg29x1tdj_Sfqp9U
           #  serviceCredentialsFileContent: ${{ secrets.CREDENTIAL_FILE_CONTENT }}
            groups: android_testers
-           file: "android/app/build/outputs/apk/debug/app-debug.apk"
+           file: "app-release.apk"
+           path: "android/app/build/outputs/apk/release/app-release.apk"
    
            
   
