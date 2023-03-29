@@ -62,7 +62,7 @@ jobs:
            appId: 1:569228925032:android:ae7d8331ae02c49301c3dd
            serviceCredentialsFileContent: ${{ secrets.CREDENTIAL_FILE_CONTENT }}
            groups: android_testers
-           file: android/app/build/outputs/apk/debug/app-debug.apk
+           file: app/build/outputs/apk/debug/app-debug.apk
    
            
   
