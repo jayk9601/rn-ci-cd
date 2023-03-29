@@ -1,0 +1,78 @@
+name: "Build Android & upload to Github"
+
+on:
+  push:
+   branches:
+     - main
+
+jobs:
+  build-android:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: actions/setup-node@v3
+        with:
+           node-version: 16
+
+      - name: Install Node modules
+        run: yarn ci
+
+      # - name: Cache Gradle Wrapper
+      #   uses: actions/cache@v2
+      #   with:
+      #     path: ~/.gradle/wrapper
+      #     key: ${{ runner.os }}-gradle-wrapper-${{ hashFiles('gradle/wrapper/gradle-wrapper.properties') }}
+
+      # - name: Cache Gradle Dependencies
+      #   uses: actions/cache@v2
+      #   with:
+      #     path: ~/.gradle/caches
+      #     key: ${{ runner.os }}-gradle-caches-${{ hashFiles('gradle/wrapper/gradle-wrapper.properties') }}
+      #     restore-keys: |
+      #       ${{ runner.os }}-gradle-caches-
+      - name: Make Gradlew Executable
+        run: cd android && chmod +x ./gradlew
+
+      # clean build folder  
+      
+      - name: Clean Build Folder
+        run: cd android && ./gradlew clean
+
+      # Build Command
+      - name: Build Android Release
+        run: cd android && ./gradlew assembleRelease
+
+      # Upload to Artifact
+      - name: Upload Artifact to Github
+        uses: actions/upload-artifact@v3
+        with:
+          name: RN-CI-CD.apk
+          path: "android/app/build/outputs/apk/release/app-release.apk"
+
+# name: Build & upload to Firebase App Distribution 
+
+# on: [push]
+
+# jobs:
+#   build:
+
+#     runs-on: ubuntu-latest
+
+#     steps:
+#     - uses: actions/checkout@v3
+#     # - name: set up JDK 1.8
+#     #   uses: actions/setup-java@v1
+#     #   with:
+#     #     java-version: 1.8
+#     - name: Install Node modules
+#       run: yarn ci
+#     - name: build release 
+#       run: cd android && ./gradlew assembleRelease
+#     - name: upload artifact to Firebase App Distribution
+#       uses: wzieba/Firebase-Distribution-Github-Action@v1
+#       with:
+#         appId: '1:569228925032:android:ae7d8331ae02c49301c3dd'
+#         token: '1//0gP9B1vpyaCbLCgYIARAAGBASNwF-L9IrH-WekGG_9ZrZYFlH8a6rGreOAP9YWxmklmJkyWq36izhouRhO3nbdmkw6CSE4ADqFac'
+#         groups: testers
+#         file: app/build/outputs/apk/release/app-release.apk
