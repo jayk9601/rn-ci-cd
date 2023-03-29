@@ -72,7 +72,11 @@ jobs:
       #   run: cd android && ./gradlew clean && cd ..
         
       - name: Build Android Release
-        run: cd android && ./gradlew assembleRelease
+        run: cd android && ./gradlew assembleRelease && cd..
+        with:
+          name: build release
+          path: android/app/build/outputs/apk/release/app-release.apk
+
         
   upload-android:
      needs: build-android
@@ -84,7 +88,7 @@ jobs:
            appId: 1:569228925032:android:ae7d8331ae02c49301c3dd
            serviceCredentialsFileContent: ${{ secrets.CREDENTIAL_FILE_CONTENT }}
            groups: android_testers
-           file: app/build/outputs/apk/release/app-release.apk
+           file: android/app/build/outputs/apk/release/app-release.apk
           #  path: "android/app/build/outputs/apk/release/app-release.apk"
    
            
