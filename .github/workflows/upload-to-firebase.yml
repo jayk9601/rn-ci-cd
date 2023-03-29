@@ -65,6 +65,9 @@ jobs:
     steps: 
       - uses: actions/checkout@v3
 
+      - name: Install Node modules
+        run: yarn ci
+
       - name: clean build folder
         run: cd android && ./gradlew clean && cd ..
         
