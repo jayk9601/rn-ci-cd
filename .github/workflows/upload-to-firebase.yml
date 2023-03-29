@@ -68,11 +68,14 @@ jobs:
       - name: Install Node modules
         run: yarn ci
 
+      - name: Make Gradlew Executable
+        run: cd android && chmod +x ./gradlew
+
       # - name: clean build folder
       #   run: cd android && ./gradlew clean && cd ..
         
       - name: Build Android Release
-        run: cd android && ./gradlew assembleRelease && cd..
+        run: cd android && ./gradlew assembleRelease && cd ..
 
       - name: Upload Artifact
         uses: actions/upload-artifact@v3
