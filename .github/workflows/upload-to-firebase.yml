@@ -6,29 +6,29 @@ on:
       - upload_to_firebase
 
 jobs:
-  install-and-test:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
+#   install-and-test:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - uses: actions/checkout@v3
 
-      - name: Install Node modules
-        run: yarn ci
+#       - name: Install Node modules
+#         run: yarn ci
 
-      - name: Cache Gradle Wrapper
-        uses: actions/cache@v3
-        with:
-         path: ~/.gradle/wrapper
-         key: ${{ runner.os }}-gradle-wrapper-${{ hashFiles('gradle/wrapper/gradle-wrapper.properties') }}
+#       - name: Cache Gradle Wrapper
+#         uses: actions/cache@v3
+#         with:
+#          path: ~/.gradle/wrapper
+#          key: ${{ runner.os }}-gradle-wrapper-${{ hashFiles('gradle/wrapper/gradle-wrapper.properties') }}
 
-      - name: Cache Gradle Dependencies
-        uses: actions/cache@v3
-        with:
-         path: ~/.gradle/caches
-         key: ${{ runner.os }}-gradle-caches-${{ hashFiles('gradle/wrapper/gradle-wrapper.properties') }}
-         restore-keys: ${{ runner.os }}-gradle-caches-
+#       - name: Cache Gradle Dependencies
+#         uses: actions/cache@v3
+#         with:
+#          path: ~/.gradle/caches
+#          key: ${{ runner.os }}-gradle-caches-${{ hashFiles('gradle/wrapper/gradle-wrapper.properties') }}
+#          restore-keys: ${{ runner.os }}-gradle-caches-
 
   build-android:
-    needs: install-and-test
+    # needs: install-and-test
     runs-on: ubuntu-latest
     steps: 
       - uses: actions/checkout@v3
@@ -39,8 +39,8 @@ jobs:
       - name: Make Gradlew Executable
         run: cd android && chmod +x ./gradlew
 
-      - name: clean build folder
-        run: cd android && ./gradlew clean && cd ..
+      # - name: clean build folder
+      #   run: cd android && ./gradlew clean && cd ..
         
       - name: Build Android Release
         run: cd android && ./gradlew assembleRelease && cd ..

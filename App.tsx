@@ -12,6 +12,7 @@ const App = () => {
           }, Math.floor(Math.random() * 200));
         }}
       />
+      <Text style={styles.messageText}>{message}</Text>
     </View>
   );
 };
